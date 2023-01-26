@@ -134,13 +134,13 @@ class Word:
             The number of errors the user has made
         """
 
-        self.word = self.__get_random_word()
+        self.word = self.get_random_word()
         self.display = ['_ ' for letter in self.word]
         self.guesses = []
         self.num_guess = 0
         self.num_errors = 0
 
-    def __get_random_word(self) -> str:
+    def get_random_word(self) -> str:
         word = wordApi.getRandomWord(maxLength=8)
         return word.word
 
@@ -281,7 +281,7 @@ class Game:
         answer = input('Want to play again? Type \'y\' to play another round, or \'n\' to exit the game.\n>>> ')
         if answer.lower() == 'y':
             self.reset()
-        else:
+        elif answer.lower() == 'n':
             exit()
 
     def run(self) -> None:
@@ -300,7 +300,7 @@ class Game:
             if self.word.check_guess(guess.lower()) == -1:
                 self.picture.update_image(self.word.get_num_errors())
             if self.check_for_win():
-                print(f'You have guessed the word {self.word.word} in {self.word.get_num_guess()} guesses!')
+                print(f'You have guessed the word {self.word.get_word} in {self.word.get_num_guess()} guesses!')
                 self.play_again()
             elif self.check_for_lose():
                 print('You have lost the game! The word was '+self.word.get_word()+'.')
