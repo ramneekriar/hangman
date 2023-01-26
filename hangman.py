@@ -300,7 +300,7 @@ class Game:
             if self.word.check_guess(guess.lower()) == -1:
                 self.picture.update_image(self.word.get_num_errors())
             if self.check_for_win():
-                print(f'You have guessed the word {self.word.get_word} in {self.word.get_num_guess()} guesses!')
+                print(f'You have guessed the word {self.word.get_word()} in {self.word.get_num_guess()} guesses!')
                 self.play_again()
             elif self.check_for_lose():
                 print('You have lost the game! The word was '+self.word.get_word()+'.')
